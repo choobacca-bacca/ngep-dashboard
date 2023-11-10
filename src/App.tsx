@@ -7,21 +7,15 @@ import './App.css';
 import AboutNGEP from './pages/AboutNGEP';
 import Metrics from './pages/Metrics';
 import Home from './pages/Home'
-import Navbar from "./components/Navbar";
 import Goals from './pages/Goals';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 
 function App() {
-
-  const DATA_COLLECTION_DATES: string[] = [
-    "13th Oct 2023",
-    "29th Sep 2023",
-    "15th Sep 2023",
-  ]
 
   return (
       <Router> 
         <div className="App">
-          <Navbar />
+          <ResponsiveAppBar />
             
         <Routes> 
                 <Route path='/' element={< Home />}></Route>
