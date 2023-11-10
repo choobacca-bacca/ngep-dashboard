@@ -1,0 +1,11 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "ngep-dashboard",
+        "image": "public.ecr.aws/m0m9f3c8/ngep-dashboard",
+        "essential": true,
+        "memory": 128
+      }
+    ]
+  }
