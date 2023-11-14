@@ -103,7 +103,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           <Link to={"/"} style={{ textDecoration: 'none'}} >
-            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <div>
               <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
               <Typography
                 variant="h5"
