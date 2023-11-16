@@ -72,6 +72,40 @@ function AboutNGEP (){
 				</Typography>
 			</CardContent>
 		</Card>
+
+		<Card variant="outlined" sx={{ maxWidth: 600 }}>
+			<AspectRatio minHeight="120px" maxHeight="200px">
+				<img
+				src="https://ngep-dashboard-resources.s3.ap-southeast-1.amazonaws.com/productive.png"
+				loading="lazy"
+				alt=""
+				/>
+			</AspectRatio>
+			<CardContent orientation="vertical">
+				<Typography level="h1">Introducing CoMET</Typography>
+				
+				<Typography level="h2" fontSize="xl" sx={{ mb: 0.5 }}>
+					The Promised Land of Workplace Productivity
+				</Typography>
+				
+				<Typography textAlign={'left'}>
+				With all of these problems, it was clear that a fundamental ground-up redesign of our system was needed. With this, we set 
+				about figuring out how we might provide an efficient, effective work experience for our officers that is safe and secure for 
+				the government.
+				</Typography>
+				<Typography></Typography>
+				<Typography textAlign={'left'}>
+				Thus, we came reversed the inside-out approach to become an outside-in approach, with the adoption of Zero Trust Architecture (ZTA).
+				 The idea is to verify you everytime you want to access a resource, but otherwise, you exist outside the network in the internet.
+				 This opens up the range of cloud apps that we can use for improved productivity (Confluence, Notion etc.) and security (Crowdstrike, MS Defender Copilot etc.).
+				</Typography>
+				<Typography></Typography>
+				<Typography textAlign={'left'}>
+				For access to our on-premises systems, you have to establish a private tunnel that authenticates you and verifies the security posture of your device
+				 as well as your identity. Thus, instead of a traditional VPN where you have access to all the systems, we control and verify your access from the internet.
+				</Typography>
+			</CardContent>
+		</Card>
   </Stack>)
 } 
 
