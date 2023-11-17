@@ -1,17 +1,10 @@
-import { useEffect, useRef, useMemo } from "react";
 import type { IBoxPlotData2, IAPIData, IData } from "../../types";
 import {
-    axisBottom,
-    axisLeft,
-    ScaleBand,
     scaleBand,
-    ScaleLinear,
-    scaleLinear,
-    select
+    scaleLinear
   } from "d3";
-import { AxisBottom, AxisBottomProps } from "./AxisBottom";
+import { AxisBottomProps } from "./AxisBottom";
 import {AxisLeft, AxisLeftProps} from "./AxisLeft";
-import { stringify } from "querystring";
 
   const TICK_LENGTH = 10;
   const STROKE_WIDTH = 2;
@@ -29,6 +22,7 @@ import { stringify } from "querystring";
 function VerticalBox ({date, data, scaleX, scaleY, width, stroke, fill,}: VerticalBoxProps) {
   const center = width/2;
   const rect_width = scaleX.bandwidth();
+  console.log(rect_width);
     return (
       <g>
         <rect
@@ -42,13 +36,13 @@ function VerticalBox ({date, data, scaleX, scaleY, width, stroke, fill,}: Vertic
             strokeWidth={STROKE_WIDTH}
         />
         <line
-          x1={center + rect_width}
-          width={rect_width}
+          x1={center-rect_width}
+          x2={center + rect_width}
           y1={scaleY(data.median)}
           y2={scaleY(data.median)}
           stroke={stroke}
           strokeWidth={STROKE_WIDTH}
-          transform={`translate(${scaleX.bandwidth()}, 0)`}
+          // transform={`translate(${scaleX.bandwidth()}, 0)`}
         />
         <line
           x1={center- scaleX.bandwidth()/2}
@@ -59,6 +53,25 @@ function VerticalBox ({date, data, scaleX, scaleY, width, stroke, fill,}: Vertic
           strokeWidth={STROKE_WIDTH}
           transform={`translate(${scaleX.bandwidth()/2}, 0)`}
         />
+        <line
+          x1={center-0.5*rect_width}
+          x2={center + 0.5*rect_width}
+          y1={scaleY(data.max)}
+          y2={scaleY(data.max)}
+          stroke={stroke}
+          strokeWidth={STROKE_WIDTH}
+          // transform={`translate(${scaleX.bandwidth()}, 0)`}
+        />
+        <line
+          x1={center-0.5*rect_width}
+          x2={center + 0.5*rect_width}
+          y1={scaleY(data.min)}
+          y2={scaleY(data.min)}
+          stroke={stroke}
+          strokeWidth={STROKE_WIDTH}
+          // transform={`translate(${scaleX.bandwidth()}, 0)`}
+        />
+
       </g>
     );
   };
