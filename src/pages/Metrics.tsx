@@ -3,11 +3,10 @@ import React, { useState } from 'react';
 import '../components/Metric-Components/UseRatioBarChart'
 import { BarChart } from '../components/Metric-Components/UseRatioBarChart';
 import { BoxPlotChart } from '../components/BoxAndWhiskComponent/BoxAndWhiskerChart';
-import type { IConsolidatedData, IAPIResponse, IAPIData } from "../types";
+import type { IAPIResponse, IAPIData } from "../types";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { CONS_DATA } from '../test_data';
 import axios from 'axios';
 
 const defaultMetricsData:IAPIData[] = [];
@@ -35,6 +34,19 @@ const defaultChartData: IAPIData = {
 	}
 
 };
+const months: string[] = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+function DateToString(dateNumber: number){
+	var date: string = "";
+	var dateArray: number[] = [];
+	const dateNumberString: string = String(dateNumber);
+	for (var i:number = 0, len:number = dateNumberString.length; i <len; i += 2 ){
+		dateArray.push(+dateNumberString.charAt(i).concat(dateNumberString.charAt(i+1)));
+	}
+	date = String(dateArray[3]) + " " + months[dateArray[2]-1] + " " + String(dateArray[0])+String(dateArray[1]);
+
+	return date;
+};
 
 function Dashboard() {
 	
@@ -49,9 +61,9 @@ function Dashboard() {
 	  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	  };
-	  const handleClose = (item: string, index: number) => {
+	  const handleClose = (item: number, index: number) => {
 		setAnchorEl(null);
-		setMenuLabel(item);
+		setMenuLabel(DateToString(item));
 		setChartData(metricsData[index]);
 	  };
 
@@ -67,7 +79,7 @@ function Dashboard() {
 		  })
 		  .then(response => {
 			setMetricsData(response.data.body);
-			setMenuLabel(String(response.data.body[0].date));
+			setMenuLabel(DateToString(response.data.body[0].date));
 			setChartData(response.data.body[0]);
 			setLoading(false);})
 		  .catch(ex => {
@@ -107,8 +119,9 @@ function Dashboard() {
 		  >
 			{metricsData.map((value, index) => {
 				const date: string = String(value.date);
+				const dateString: string = DateToString(value.date);
 			  return(
-				<MenuItem onClick={() => handleClose(date, index)}> {date}</MenuItem>
+				<MenuItem onClick={() => handleClose(value.date, index)}> {dateString}</MenuItem>
 			  );
 			  })
 			}

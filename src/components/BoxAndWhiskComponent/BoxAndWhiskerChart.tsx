@@ -22,7 +22,6 @@ import {AxisLeft, AxisLeftProps} from "./AxisLeft";
 function VerticalBox ({date, data, scaleX, scaleY, width, stroke, fill,}: VerticalBoxProps) {
   const center = width/2;
   const rect_width = scaleX.bandwidth();
-  console.log(rect_width);
     return (
       <g>
         <rect
@@ -82,7 +81,6 @@ export function BoxPlotChart ({ box_data,date }: IAPIData){
     const center = width/2;
     const height = 300 - margin.top - margin.bottom;
     const date_scale= String(date);
-    console.log(date_scale);
     const scaleX = scaleBand()
     .domain(date_scale)
     .range([0, width])
