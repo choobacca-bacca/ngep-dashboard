@@ -99,9 +99,9 @@ function Goals (){
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Goal Metric</TableCell>
-            <TableCell align="left">Goal</TableCell>
-            <TableCell align="left">Goal Description</TableCell>
+            <TableCell><b>Goal Metric</b></TableCell>
+            <TableCell align="left"><b>Goal</b></TableCell>
+            <TableCell align="left"><b>Goal Description</b></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
