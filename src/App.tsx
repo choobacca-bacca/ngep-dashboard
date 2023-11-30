@@ -6,7 +6,7 @@ import Metrics from './pages/Metrics';
 import Home from './pages/Home'
 import Goals from './pages/Goals';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
 
 ReactGA.initialize('G-37EY8P3ZJJ');
@@ -14,7 +14,7 @@ ReactGA.initialize('G-37EY8P3ZJJ');
 function App() {
   
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send("pageview");
   }, []);
 
   return (
